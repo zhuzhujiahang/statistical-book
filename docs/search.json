@@ -14,7 +14,17 @@
     "href": "intro.html",
     "title": "1  Introduction",
     "section": "",
-    "text": "1.1 报错总结\nresubmit content: step1: type git status in terminal next to console, submit file basing on the tips, then type: git commit -m \"Initial commit\" then type: usethis::use_github(), then, set the pages in github\n交叉引用没有对应的时候(在reference)里面对应就会报错,不能render book",
+    "text": "1.1 报错总结\nresubmit content: step1: type git status in terminal next to console, submit file basing on the tips, then type: git commit -m \"Initial commit\" then type: usethis::use_github()will create a new 仓库, if you had this 仓库, you could push(click the bottom on the high-right side) you project in github directly, then, set the pages in github",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#报错总结",
+    "href": "intro.html#报错总结",
+    "title": "1  Introduction",
+    "section": "",
+    "text": "交叉引用没有对应的时候(在reference)里面对应就会报错,不能render book\n连接不了github的token的原因是校园网,任何DNS的问题很可能就是校园网的问题.",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
