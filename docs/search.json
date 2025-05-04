@@ -14,7 +14,7 @@
     "href": "intro.html",
     "title": "1  Introduction",
     "section": "",
-    "text": "resubmit content: step1: type git status in terminal next to console, submit file basing on the tips, then type: git commit -m \"Initial commit\" then type: usethis::use_github(), then, set the pages in github\n\n1 + 1\n\n[1] 2",
+    "text": "1.1 报错总结\nresubmit content: step1: type git status in terminal next to console, submit file basing on the tips, then type: git commit -m \"Initial commit\" then type: usethis::use_github(), then, set the pages in github\n交叉引用没有对应的时候(在reference)里面对应就会报错,不能render book",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
     ]
