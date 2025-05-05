@@ -12,21 +12,51 @@
   {
     "objectID": "intro.html",
     "href": "intro.html",
-    "title": "1  Introduction",
+    "title": "1  Statistics",
     "section": "",
-    "text": "1.1 报错总结\nresubmit content: step1: type git status in terminal next to console, submit file basing on the tips, then type: git commit -m \"Initial commit\" then type: usethis::use_github()will create a new 仓库, if you had this 仓库, you could push(click the bottom on the high-right side) you project in github directly, then, set the pages in github",
+    "text": "1.1 网络分析",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics</span>"
     ]
   },
   {
-    "objectID": "intro.html#报错总结",
-    "href": "intro.html#报错总结",
-    "title": "1  Introduction",
+    "objectID": "intro.html#网络分析",
+    "href": "intro.html#网络分析",
+    "title": "1  Statistics",
     "section": "",
-    "text": "交叉引用没有对应的时候(在reference)里面对应就会报错,不能render book\n连接不了github的token的原因是校园网,任何DNS的问题很可能就是校园网的问题.",
+    "text": "1.1.1 问题引入与基本原理:\n如何一步走完所有的桥?\n\n欧拉在1736年发表的Solutio problematis ad geometriam situs pertinents中,首次用图论的方法解决了这个问题.\n欧拉提出:\n\n每个陆地看作一个节点,每座桥看作一条边,这样就可简化图形\n\n若一个图中有两个或者两个以上的节点有奇数条边, 则不可能有一条路径只经过每条边一次而遍历所有边\n\nThis method created Graph Theory, which is the basics of the network analysis. The Graph Theory is studying the association between dots and edges.\nThe edges have directions(digraph) or none directions(undigraph) and weight representing the strength of relationship.\nThe main categories of network:\n\n\n\n1.1.2 Code demo:\n\nlibrary(igraph)\n\n\nAttaching package: 'igraph'\n\n\nThe following objects are masked from 'package:stats':\n\n    decompose, spectrum\n\n\nThe following objects are masked from 'package:lubridate':\n\n    %--%, union\n\n\nThe following objects are masked from 'package:dplyr':\n\n    as_data_frame, groups, union\n\n\nThe following objects are masked from 'package:purrr':\n\n    compose, simplify\n\n\nThe following object is masked from 'package:tidyr':\n\n    crossing\n\n\nThe following object is masked from 'package:tibble':\n\n    as_data_frame\n\n\nThe following object is masked from 'package:base':\n\n    union\n\n#无加权网络\ngraph(edges = c(1,2, 2,3, 3,4, 4,1),\n          n = 4, \n          directed = F) -&gt; g\nplot(g)\n\n\n\n\n\n\n\n\n\n#加权网络\ngraph(edges = c(1,2, 2,3, 3,4, 4,1),\n          n = 4, \n          directed = F) -&gt; g\n\nE(g)$weight = c(5,3,8,2) # 赋予权重\n\nplot(g,\n     edge.width = E(g)$weight \n     )\n\n\n\n\n\n\n\n\n\n#带方向的无加权网络\ngraph(edges = c(1,2, 2,3, 3,4, 4,1),\n          n = 4, \n          directed = T) -&gt; g\n\n\nplot(g,\n     edge.arrow.size = 0.5#箭头大小\n     )\n\n\n\n\n\n\n\n\n\n#带方向的无加权网络\ngraph(edges = c(1,2, 2,3, 3,4, 4,1),\n          n = 4, \n          directed = T) -&gt; g\n\nE(g)$weight = c(5,3,8,2) # 赋予权重\n\nplot(g,\n     edge.arrow.size = 0.5,#箭头大小\n     edge.width = E(g)$weight\n     )\n\n\n\n\n\n\n\n\nThe history of network is short. Here is the figure of network history:\n\n\n\n1.1.3 与相关分析的不同\n线性相关分析在控制其他$X{i}, i $ 对 \\(Y\\)的影响的前提下, 估计\\(X_{1}\\)对\\(Y\\)的影响\n网络分析不特别区分自变量和因变量, 探索变量之间的相互关联.",
     "crumbs": [
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction</span>"
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#网络的应用",
+    "href": "intro.html#网络的应用",
+    "title": "1  Statistics",
+    "section": "1.2 网络的应用",
+    "text": "1.2 网络的应用\n网络分析常见的场景 - 社会网络分析, 节点是人 - 文献计量学中的网络分析 - 文本网络分析 - 症状网络分析\n\n1.2.1 症状网络的作用\n\n症状网络特色和变化\n共病网络关键点识别\n因果关系探索\n探索干预对某种症状/整个症状网络的影响\n探索性图论进行群体识别",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#网络分析的研究设计",
+    "href": "intro.html#网络分析的研究设计",
+    "title": "1  Statistics",
+    "section": "1.3 网络分析的研究设计",
+    "text": "1.3 网络分析的研究设计\n\n选什么水平的数据, 维度还是条目(都可以)\n样本量多少?(至少300以上)\n\n\n1.3.1 主要的统计步骤\n\n网络结构的设计与估计\n网络推断分析\n网络结构准确性分析\n\n\n网络结构的估计 基本的网络结构类型\n\n\n相关矩阵网络\n\n加权网络;虚假关系多\n\n偏相关网络\n\n精简矩阵;只保留节点之间的直接连线 控制了网络中其他节点后两个节点之间仍然存在关系-直接联系 偏相关网络-加权相关网络, 考虑了两点间相关被其他节点影响的可能性(条件独立相关)\n\n自适应Lasso算法矩阵 专门用于估计偏相关网络的lasso变异, 把Lasso算法应用到偏相关网络结构(在偏相关网络基础上加入惩罚因子,减少关联相对较弱的连线)\nEBICglasso(拓展贝叶斯信息准则)\n\n举例:\n\n不同数据类型的匹配的方法: - 连续性数据 -&gt; 基于偏相关分析的高斯图论 (qgraph package) - 分类数据 -&gt; 伊辛模型(Ising model)(IsingFit package) 本质是多元回归, 边线代表某个节点能够预测其他节点的程度 - 连续型+分类数据 -&gt; 混合网络模型(mgm package)\n\n网络推断分析 全局推断:\n\n\n对整体进行分析\n对局部:比如小世界现象 和 密度.\n\n\n创建小世界网络和随机网络\n计算指标:平均路径长度, 聚集系数\n比较指标:\n\n平均路径长度: 当前网络的平均路径长度应该小于或者接近随机网络的平均路径长度的1.5倍.\n聚集系数: 当前网络的聚集系数应该大于随机网络的聚集系数的2倍\n\n满足两个条件的是小世界网络\n\n局部推断:\n\n对网络中的节点和变现进行分析, 比如社区检测和节点的中心指标.\n\n社区检测指将网络划分为若干个子集和社区,使得每个子集的内部节点连接紧密, 而不同子集之间的连接稀疏. 有助于识别网络的模块化结构, 揭示网络的功能区或群体, 如社交网络中的朋友圈, 生物网络中的功能模块.\n\n节点的中心性指标: 衡量节点在网络中的重要性. 常见的指标包括: 度中心性, 接近中心性, 中介中心性.\n\n\n\n\n\n网络准确性分析:\n用Bootstrapping多次重构网络来估计边线权重和中心指标的稳定性\n\n评估边权重的稳定性\n评估中心性指标的稳定性",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#latex-数学公式速查表",
+    "href": "intro.html#latex-数学公式速查表",
+    "title": "1  Statistics",
+    "section": "2.1 LaTeX 数学公式速查表",
+    "text": "2.1 LaTeX 数学公式速查表\n\n2.1.1 1. 希腊字母\n\n\n\n小写\n代码\n大写\n代码\n\n\n\n\n\\(\\alpha\\)\n\\alpha\n\\(A\\)\nA\n\n\n\\(\\beta\\)\n\\beta\n\\(B\\)\nB\n\n\n\\(\\gamma\\)\n\\gamma\n\\(\\Gamma\\)\n\\Gamma\n\n\n\\(\\theta\\)\n\\theta\n\\(\\Theta\\)\n\\Theta\n\n\n\\(\\pi\\)\n\\pi\n\\(\\Pi\\)\n\\Pi\n\n\n\n\n\n2.1.2 2. 运算符\n\n\n\n符号\n代码\n符号\n代码\n\n\n\n\n\\(x \\pm y\\)\nx \\pm y\n\\(x \\times y\\)\nx \\times y\n\n\n\\(x \\div y\\)\nx \\div y\n\\(x \\cdot y\\)\nx \\cdot y\n\n\n\\(x \\neq y\\)\nx \\neq y\n\\(x \\approx y\\)\nx \\approx y\n\n\n\\(x \\geq y\\)\nx \\geq y\n\\(x \\leq y\\)\nx \\leq y\n\n\n\n\n\n2.1.3 3. 上下标与分数\n\n\n\n符号\n代码\n\n\n\n\n\\(x^2\\)\nx^2\n\n\n\\(x_1\\)\nx_1\n\n\n\\(\\frac{a}{b}\\)\n\\frac{a}{b}\n\n\n\\(\\sqrt{x}\\)\n\\sqrt{x}\n\n\n\\(\\sqrt[n]{x}\\)\n\\sqrt[n]{x}\n\n\n\n\n\n2.1.4 4. 微积分\n\n\n\n符号\n代码\n\n\n\n\n\\(\\frac{df}{dx}\\)\n\\frac{df}{dx}\n\n\n\\(\\frac{\\partial f}{\\partial x}\\)\n\\frac{\\partial f}{\\partial x}\n\n\n\\(\\int_a^b f(x)dx\\)\n\\int_a^b f(x)dx\n\n\n\\(\\lim_{x \\to 0} f(x)\\)\n\\lim_{x \\to 0} f(x)\n\n\n\\(\\sum_{i=1}^n x_i\\)\n\\sum_{i=1}^n x_i\n\n\n\n\n\n2.1.5 5. 矩阵与向量\n\n\n\n\n\n\n\n符号\n代码\n\n\n\n\n\\(\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}\\)\n\\begin{bmatrix} a & b \\\\ c & d \\end{bmatrix}\n\n\n\\(\\vec{v}\\)\n\\vec{v}\n\n\n\\(\\mathbf{a} \\cdot \\mathbf{b}\\)\n\\mathbf{a} \\cdot \\mathbf{b}\n\n\n\n\n\n2.1.6 6. 逻辑与集合\n\n\n\n符号\n代码\n符号\n代码\n\n\n\n\n\\(x \\in A\\)\nx \\in A\n\\(A \\subset B\\)\nA \\subset B\n\n\n\\(A \\cup B\\)\nA \\cup B\n\\(A \\cap B\\)\nA \\cap B\n\n\n\\(\\forall x\\)\n\\forall x\n\\(\\exists x\\)\n\\exists x\n\n\n\n\n\n2.1.7 7. 箭头与括号\n\n\n\n\n\n\n\n\n\n符号\n代码\n符号\n代码\n\n\n\n\n\\(x \\to y\\)\nx \\to y\n\\(f: X \\to Y\\)\nf: X \\to Y\n\n\n\\(\\left( \\frac{a}{b} \\right)\\)\n\\left( \\frac{a}{b} \\right)\n\\(\\|x\\|\\)\n\\|x\\|\n\n\n\n\n\n2.1.8 8. 其他符号\n\n\n\n符号\n代码\n符号\n代码\n\n\n\n\n\\(\\infty\\)\n\\infty\n\\(\\nabla\\)\n\\nabla\n\n\n\\(\\partial\\)\n\\partial\n\\(\\dots\\)\n\\dots",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics</span>"
     ]
   },
   {

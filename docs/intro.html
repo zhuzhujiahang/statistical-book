@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Introduction – statistical book</title>
+<title>1&nbsp; Statistics – statistical book</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -103,6 +103,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -115,7 +144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Statistics</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -149,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -174,7 +203,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#报错总结" id="toc-报错总结" class="nav-link active" data-scroll-target="#报错总结"><span class="header-section-number">1.1</span> 报错总结</a></li>
+  <li><a href="#网络分析" id="toc-网络分析" class="nav-link active" data-scroll-target="#网络分析"><span class="header-section-number">1.1</span> 网络分析</a>
+  <ul class="collapse">
+  <li><a href="#问题引入与基本原理" id="toc-问题引入与基本原理" class="nav-link" data-scroll-target="#问题引入与基本原理"><span class="header-section-number">1.1.1</span> 问题引入与基本原理:</a></li>
+  <li><a href="#code-demo" id="toc-code-demo" class="nav-link" data-scroll-target="#code-demo"><span class="header-section-number">1.1.2</span> Code demo:</a></li>
+  <li><a href="#与相关分析的不同" id="toc-与相关分析的不同" class="nav-link" data-scroll-target="#与相关分析的不同"><span class="header-section-number">1.1.3</span> 与相关分析的不同</a></li>
+  </ul></li>
+  <li><a href="#网络的应用" id="toc-网络的应用" class="nav-link" data-scroll-target="#网络的应用"><span class="header-section-number">1.2</span> 网络的应用</a>
+  <ul class="collapse">
+  <li><a href="#症状网络的作用" id="toc-症状网络的作用" class="nav-link" data-scroll-target="#症状网络的作用"><span class="header-section-number">1.2.1</span> 症状网络的作用</a></li>
+  </ul></li>
+  <li><a href="#网络分析的研究设计" id="toc-网络分析的研究设计" class="nav-link" data-scroll-target="#网络分析的研究设计"><span class="header-section-number">1.3</span> 网络分析的研究设计</a>
+  <ul class="collapse">
+  <li><a href="#主要的统计步骤" id="toc-主要的统计步骤" class="nav-link" data-scroll-target="#主要的统计步骤"><span class="header-section-number">1.3.1</span> 主要的统计步骤</a></li>
+  </ul></li>
+  <li><a href="#latex数学公式速查表" id="toc-latex数学公式速查表" class="nav-link" data-scroll-target="#latex数学公式速查表"><span class="header-section-number">2</span> LaTex数学公式速查表</a>
+  <ul class="collapse">
+  <li><a href="#latex-数学公式速查表" id="toc-latex-数学公式速查表" class="nav-link" data-scroll-target="#latex-数学公式速查表"><span class="header-section-number">2.1</span> LaTeX 数学公式速查表</a>
+  <ul class="collapse">
+  <li><a href="#希腊字母" id="toc-希腊字母" class="nav-link" data-scroll-target="#希腊字母"><span class="header-section-number">2.1.1</span> 1. 希腊字母</a></li>
+  <li><a href="#运算符" id="toc-运算符" class="nav-link" data-scroll-target="#运算符"><span class="header-section-number">2.1.2</span> 2. 运算符</a></li>
+  <li><a href="#上下标与分数" id="toc-上下标与分数" class="nav-link" data-scroll-target="#上下标与分数"><span class="header-section-number">2.1.3</span> 3. 上下标与分数</a></li>
+  <li><a href="#微积分" id="toc-微积分" class="nav-link" data-scroll-target="#微积分"><span class="header-section-number">2.1.4</span> 4. 微积分</a></li>
+  <li><a href="#矩阵与向量" id="toc-矩阵与向量" class="nav-link" data-scroll-target="#矩阵与向量"><span class="header-section-number">2.1.5</span> 5. 矩阵与向量</a></li>
+  <li><a href="#逻辑与集合" id="toc-逻辑与集合" class="nav-link" data-scroll-target="#逻辑与集合"><span class="header-section-number">2.1.6</span> 6. 逻辑与集合</a></li>
+  <li><a href="#箭头与括号" id="toc-箭头与括号" class="nav-link" data-scroll-target="#箭头与括号"><span class="header-section-number">2.1.7</span> 7. 箭头与括号</a></li>
+  <li><a href="#其他符号" id="toc-其他符号" class="nav-link" data-scroll-target="#其他符号"><span class="header-section-number">2.1.8</span> 8. 其他符号</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#发布到github" id="toc-发布到github" class="nav-link" data-scroll-target="#发布到github"><span class="header-section-number">3</span> 发布到GitHub</a>
+  <ul class="collapse">
+  <li><a href="#resubmit-content" id="toc-resubmit-content" class="nav-link" data-scroll-target="#resubmit-content"><span class="header-section-number">3.0.1</span> <strong>Resubmit Content</strong></a></li>
+  </ul></li>
+  <li><a href="#报错总结" id="toc-报错总结" class="nav-link" data-scroll-target="#报错总结"><span class="header-section-number">4</span> 报错总结</a></li>
+  <li><a href="#prompts" id="toc-prompts" class="nav-link" data-scroll-target="#prompts"><span class="header-section-number">5</span> Prompts :</a></li>
   </ul>
 </nav>
     </div>
@@ -183,7 +245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Statistics</span></h1>
 </div>
 
 
@@ -200,19 +262,560 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>resubmit content: step1: type <code>git status</code> in terminal next to console, submit file basing on the tips, then type: <code>git commit -m "Initial commit"</code> then type: <code>usethis::use_github()</code>will create a new 仓库, if you had this 仓库, you could push(click the bottom on the high-right side) you project in github directly, then, set the pages in github</p>
+<section id="网络分析" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="网络分析"><span class="header-section-number">1.1</span> 网络分析</h2>
+<section id="问题引入与基本原理" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="问题引入与基本原理"><span class="header-section-number">1.1.1</span> 问题引入与基本原理:</h3>
+<p>如何一步走完所有的桥?</p>
+<p><img src="images/clipboard-275324846.png" class="img-fluid" width="233"></p>
+<p>欧拉在1736年发表的<em>Solutio problematis ad geometriam situs pertinents中,首次用图论的方法解决了这个问题.</em></p>
+<p>欧拉提出:</p>
+<ul>
+<li><p>每个陆地看作一个节点,每座桥看作一条边,这样就可简化图形</p>
+<p><img src="images/clipboard-948614600.png" class="img-fluid" width="233"></p></li>
+<li><p>若一个图中有两个或者两个以上的<strong>节点有奇数条边</strong>, 则不可能有一条路径只经过每条边一次而遍历所有边</p></li>
+</ul>
+<p>This method created <strong>Graph Theory</strong>, which is the basics of the network analysis. The Graph Theory is studying the association between dots and edges.</p>
+<p>The edges have <strong>directions(digraph)</strong> or <strong>none directions(undigraph)</strong> and <strong>weight</strong> representing the strength of relationship.</p>
+<p>The main categories of network:</p>
+<p><img src="images/clipboard-2952130484.png" class="img-fluid" width="489"></p>
+</section>
+<section id="code-demo" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="code-demo"><span class="header-section-number">1.1.2</span> Code demo:</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'igraph'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    decompose, spectrum</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:lubridate':
+
+    %--%, union</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:dplyr':
+
+    as_data_frame, groups, union</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:purrr':
+
+    compose, simplify</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:tidyr':
+
+    crossing</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:tibble':
+
+    as_data_frame</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:base':
+
+    union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#无加权网络</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">graph</span>(<span class="at">edges =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>, <span class="dv">2</span>,<span class="dv">3</span>, <span class="dv">3</span>,<span class="dv">4</span>, <span class="dv">4</span>,<span class="dv">1</span>),</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">n =</span> <span class="dv">4</span>, </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">directed =</span> F) <span class="ot">-&gt;</span> g</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(g)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="intro_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
-<section id="报错总结" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="报错总结"><span class="header-section-number">1.1</span> 报错总结</h2>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#加权网络</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">graph</span>(<span class="at">edges =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>, <span class="dv">2</span>,<span class="dv">3</span>, <span class="dv">3</span>,<span class="dv">4</span>, <span class="dv">4</span>,<span class="dv">1</span>),</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">n =</span> <span class="dv">4</span>, </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">directed =</span> F) <span class="ot">-&gt;</span> g</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">E</span>(g)<span class="sc">$</span>weight <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">8</span>,<span class="dv">2</span>) <span class="co"># 赋予权重</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(g,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">edge.width =</span> <span class="fu">E</span>(g)<span class="sc">$</span>weight </span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>     )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="intro_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#带方向的无加权网络</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">graph</span>(<span class="at">edges =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>, <span class="dv">2</span>,<span class="dv">3</span>, <span class="dv">3</span>,<span class="dv">4</span>, <span class="dv">4</span>,<span class="dv">1</span>),</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">n =</span> <span class="dv">4</span>, </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">directed =</span> T) <span class="ot">-&gt;</span> g</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(g,</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">edge.arrow.size =</span> <span class="fl">0.5</span><span class="co">#箭头大小</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>     )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="intro_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#带方向的无加权网络</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">graph</span>(<span class="at">edges =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>, <span class="dv">2</span>,<span class="dv">3</span>, <span class="dv">3</span>,<span class="dv">4</span>, <span class="dv">4</span>,<span class="dv">1</span>),</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">n =</span> <span class="dv">4</span>, </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">directed =</span> T) <span class="ot">-&gt;</span> g</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">E</span>(g)<span class="sc">$</span>weight <span class="ot">=</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">8</span>,<span class="dv">2</span>) <span class="co"># 赋予权重</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(g,</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">edge.arrow.size =</span> <span class="fl">0.5</span>,<span class="co">#箭头大小</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">edge.width =</span> <span class="fu">E</span>(g)<span class="sc">$</span>weight</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>     )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="intro_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The history of network is short. Here is the figure of network history:</p>
+<p><img src="images/clipboard-316269284.png" class="img-fluid"></p>
+</section>
+<section id="与相关分析的不同" class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3" class="anchored" data-anchor-id="与相关分析的不同"><span class="header-section-number">1.1.3</span> 与相关分析的不同</h3>
+<p>线性相关分析在控制其他$X{i}, i $ 对 <span class="math inline">\(Y\)</span>的影响的前提下, 估计<span class="math inline">\(X_{1}\)</span>对<span class="math inline">\(Y\)</span>的影响</p>
+<p>网络分析不特别区分自变量和因变量, 探索变量之间的相互关联.</p>
+</section>
+</section>
+<section id="网络的应用" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="网络的应用"><span class="header-section-number">1.2</span> 网络的应用</h2>
+<p>网络分析常见的场景 - 社会网络分析, 节点是人 - 文献计量学中的网络分析 - 文本网络分析 - 症状网络分析</p>
+<section id="症状网络的作用" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="症状网络的作用"><span class="header-section-number">1.2.1</span> 症状网络的作用</h3>
+<ul>
+<li>症状网络特色和变化</li>
+<li>共病网络关键点识别</li>
+<li>因果关系探索</li>
+<li>探索干预对某种症状/整个症状网络的影响</li>
+<li>探索性图论进行群体识别</li>
+</ul>
+</section>
+</section>
+<section id="网络分析的研究设计" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="网络分析的研究设计"><span class="header-section-number">1.3</span> 网络分析的研究设计</h2>
+<ul>
+<li>选什么水平的数据, 维度还是条目(都可以)</li>
+<li>样本量多少?(至少300以上)</li>
+</ul>
+<section id="主要的统计步骤" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="主要的统计步骤"><span class="header-section-number">1.3.1</span> 主要的统计步骤</h3>
+<ul>
+<li>网络结构的设计与估计</li>
+<li>网络推断分析</li>
+<li>网络结构准确性分析</li>
+</ul>
+<ol type="1">
+<li>网络结构的估计 基本的网络结构类型</li>
+</ol>
+<ul>
+<li><p>相关矩阵网络</p>
+<ul>
+<li>加权网络;虚假关系多</li>
+</ul></li>
+<li><p>偏相关网络</p>
+<ul>
+<li>精简矩阵;只保留节点之间的直接连线 控制了网络中其他节点后两个节点之间仍然存在关系-直接联系 偏相关网络-加权相关网络, 考虑了两点间相关被其他节点影响的可能性(条件独立相关)</li>
+</ul></li>
+<li><p>自适应Lasso算法矩阵 专门用于估计偏相关网络的lasso变异, 把Lasso算法应用到偏相关网络结构(在偏相关网络基础上加入惩罚因子,减少关联相对较弱的连线)</p>
+<p>EBICglasso(拓展贝叶斯信息准则)</p></li>
+</ul>
+<p>举例:</p>
+<p><img src="images/clipboard-1814531885.png" class="img-fluid"></p>
+<p>不同数据类型的匹配的方法: - 连续性数据 -&gt; 基于偏相关分析的高斯图论 (<code>qgraph package</code>) - 分类数据 -&gt; 伊辛模型(Ising model)(<code>IsingFit package</code>) 本质是多元回归, 边线代表某个节点能够预测其他节点的程度 - 连续型+分类数据 -&gt; 混合网络模型(<code>mgm package</code>)</p>
+<ol start="2" type="1">
+<li>网络推断分析 全局推断:</li>
+</ol>
+<ul>
+<li><p>对整体进行分析</p></li>
+<li><p>对局部:比如小世界现象 和 密度.</p>
+<p><img src="images/clipboard-3277083869.png" class="img-fluid"></p>
+<ol type="1">
+<li><p>创建小世界网络和随机网络</p></li>
+<li><p>计算指标:平均路径长度, 聚集系数</p></li>
+<li><p>比较指标:</p>
+<ul>
+<li><p>平均路径长度: 当前网络的平均路径长度应该小于或者接近随机网络的平均路径长度的1.5倍.</p></li>
+<li><p>聚集系数: 当前网络的聚集系数应该大于随机网络的聚集系数的2倍</p></li>
+</ul>
+<p>满足两个条件的是小世界网络</p></li>
+</ol>
+<p>局部推断:</p>
+<ul>
+<li><p>对网络中的节点和变现进行分析, 比如<strong>社区检测</strong>和节点的<strong>中心指标</strong>.</p>
+<ol type="1">
+<li><p>社区检测指将网络划分为若干个子集和社区,使得每个子集的内部节点连接紧密, 而不同子集之间的连接稀疏. <strong>有助于识别网络的模块化结构, 揭示网络的功能区或群体, 如社交网络中的朋友圈, 生物网络中的功能模块</strong>.</p>
+<p><img src="images/clipboard-2635631287.png" class="img-fluid"></p></li>
+<li><p>节点的中心性指标: 衡量节点在网络中的重要性. 常见的指标包括: 度中心性, 接近中心性, 中介中心性.</p>
+<p><img src="images/clipboard-881189155.png" class="img-fluid"></p></li>
+</ol></li>
+</ul></li>
+</ul>
+<ol start="3" type="1">
+<li><p>网络准确性分析:</p>
+<p>用Bootstrapping多次重构网络来估计边线权重和中心指标的稳定性</p>
+<ul>
+<li><p>评估<strong>边权重</strong>的稳定性</p></li>
+<li><p>评估中心性指标的稳定性</p>
+<p><img src="images/clipboard-610580424.png" class="img-fluid"></p></li>
+</ul></li>
+<li></li>
+</ol>
+</section>
+</section>
+<section id="latex数学公式速查表" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> LaTex数学公式速查表</h1>
+<section id="latex-数学公式速查表" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="latex-数学公式速查表"><span class="header-section-number">2.1</span> LaTeX 数学公式速查表</h2>
+<section id="希腊字母" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="希腊字母"><span class="header-section-number">2.1.1</span> 1. 希腊字母</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>小写</th>
+<th>代码</th>
+<th>大写</th>
+<th>代码</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\alpha\)</span></td>
+<td><code>\alpha</code></td>
+<td><span class="math inline">\(A\)</span></td>
+<td><code>A</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\beta\)</span></td>
+<td><code>\beta</code></td>
+<td><span class="math inline">\(B\)</span></td>
+<td><code>B</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\gamma\)</span></td>
+<td><code>\gamma</code></td>
+<td><span class="math inline">\(\Gamma\)</span></td>
+<td><code>\Gamma</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\theta\)</span></td>
+<td><code>\theta</code></td>
+<td><span class="math inline">\(\Theta\)</span></td>
+<td><code>\Theta</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\pi\)</span></td>
+<td><code>\pi</code></td>
+<td><span class="math inline">\(\Pi\)</span></td>
+<td><code>\Pi</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="运算符" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="运算符"><span class="header-section-number">2.1.2</span> 2. 运算符</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>符号</th>
+<th>代码</th>
+<th>符号</th>
+<th>代码</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(x \pm y\)</span></td>
+<td><code>x \pm y</code></td>
+<td><span class="math inline">\(x \times y\)</span></td>
+<td><code>x \times y</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x \div y\)</span></td>
+<td><code>x \div y</code></td>
+<td><span class="math inline">\(x \cdot y\)</span></td>
+<td><code>x \cdot y</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(x \neq y\)</span></td>
+<td><code>x \neq y</code></td>
+<td><span class="math inline">\(x \approx y\)</span></td>
+<td><code>x \approx y</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x \geq y\)</span></td>
+<td><code>x \geq y</code></td>
+<td><span class="math inline">\(x \leq y\)</span></td>
+<td><code>x \leq y</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="上下标与分数" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="上下标与分数"><span class="header-section-number">2.1.3</span> 3. 上下标与分数</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>符号</th>
+<th>代码</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(x^2\)</span></td>
+<td><code>x^2</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(x_1\)</span></td>
+<td><code>x_1</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\frac{a}{b}\)</span></td>
+<td><code>\frac{a}{b}</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\sqrt{x}\)</span></td>
+<td><code>\sqrt{x}</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\sqrt[n]{x}\)</span></td>
+<td><code>\sqrt[n]{x}</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="微积分" class="level3" data-number="2.1.4">
+<h3 data-number="2.1.4" class="anchored" data-anchor-id="微积分"><span class="header-section-number">2.1.4</span> 4. 微积分</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>符号</th>
+<th>代码</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\frac{df}{dx}\)</span></td>
+<td><code>\frac{df}{dx}</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\frac{\partial f}{\partial x}\)</span></td>
+<td><code>\frac{\partial f}{\partial x}</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\int_a^b f(x)dx\)</span></td>
+<td><code>\int_a^b f(x)dx</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\lim_{x \to 0} f(x)\)</span></td>
+<td><code>\lim_{x \to 0} f(x)</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\sum_{i=1}^n x_i\)</span></td>
+<td><code>\sum_{i=1}^n x_i</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="矩阵与向量" class="level3" data-number="2.1.5">
+<h3 data-number="2.1.5" class="anchored" data-anchor-id="矩阵与向量"><span class="header-section-number">2.1.5</span> 5. 矩阵与向量</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 45%">
+<col style="width: 54%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>符号</th>
+<th>代码</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix}\)</span></td>
+<td><code>\begin{bmatrix} a &amp; b \\ c &amp; d \end{bmatrix}</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\vec{v}\)</span></td>
+<td><code>\vec{v}</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\mathbf{a} \cdot \mathbf{b}\)</span></td>
+<td><code>\mathbf{a} \cdot \mathbf{b}</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="逻辑与集合" class="level3" data-number="2.1.6">
+<h3 data-number="2.1.6" class="anchored" data-anchor-id="逻辑与集合"><span class="header-section-number">2.1.6</span> 6. 逻辑与集合</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>符号</th>
+<th>代码</th>
+<th>符号</th>
+<th>代码</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(x \in A\)</span></td>
+<td><code>x \in A</code></td>
+<td><span class="math inline">\(A \subset B\)</span></td>
+<td><code>A \subset B</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(A \cup B\)</span></td>
+<td><code>A \cup B</code></td>
+<td><span class="math inline">\(A \cap B\)</span></td>
+<td><code>A \cap B</code></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\forall x\)</span></td>
+<td><code>\forall x</code></td>
+<td><span class="math inline">\(\exists x\)</span></td>
+<td><code>\exists x</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="箭头与括号" class="level3" data-number="2.1.7">
+<h3 data-number="2.1.7" class="anchored" data-anchor-id="箭头与括号"><span class="header-section-number">2.1.7</span> 7. 箭头与括号</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>符号</th>
+<th>代码</th>
+<th>符号</th>
+<th>代码</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(x \to y\)</span></td>
+<td><code>x \to y</code></td>
+<td><span class="math inline">\(f: X \to Y\)</span></td>
+<td><code>f: X \to Y</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\left( \frac{a}{b} \right)\)</span></td>
+<td><code>\left( \frac{a}{b} \right)</code></td>
+<td><span class="math inline">\(\|x\|\)</span></td>
+<td><code>\|x\|</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="其他符号" class="level3" data-number="2.1.8">
+<h3 data-number="2.1.8" class="anchored" data-anchor-id="其他符号"><span class="header-section-number">2.1.8</span> 8. 其他符号</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>符号</th>
+<th>代码</th>
+<th>符号</th>
+<th>代码</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\infty\)</span></td>
+<td><code>\infty</code></td>
+<td><span class="math inline">\(\nabla\)</span></td>
+<td><code>\nabla</code></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\partial\)</span></td>
+<td><code>\partial</code></td>
+<td><span class="math inline">\(\dots\)</span></td>
+<td><code>\dots</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+</section>
+<section id="发布到github" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 发布到GitHub</h1>
+<section id="resubmit-content" class="level3" data-number="3.0.1">
+<h3 data-number="3.0.1" class="anchored" data-anchor-id="resubmit-content"><span class="header-section-number">3.0.1</span> <strong>Resubmit Content</strong></h3>
+<p>resubmit content: step1: type <code>git status</code> in terminal next to console,</p>
+<p><strong>Step 1: Check Git Status​</strong>​</p>
+<ul>
+<li><p>Open the terminal and type:</p>
+<pre><code>git status</code></pre>
+<p>This will show the current state of your files.</p></li>
+</ul>
+<p>​<strong>​Step 2: Commit Changes​</strong>​</p>
+<ul>
+<li><p>If there are changes to submit, run:</p>
+<pre><code>git commit -m "Initial commit"</code></pre></li>
+</ul>
+<p>​<strong>​Step 3: Connect to GitHub​</strong>​</p>
+<ul>
+<li><p>To create a new GitHub repository, run in R (if using <code>usethis</code>):</p>
+<pre><code>usethis::use_github()</code></pre>
+<p>This will set up a new repository.</p></li>
+</ul>
+<p>​<strong>​Step 4: Push to GitHub (If Repository Exists)​</strong>​</p>
+<ul>
+<li><p>If you already have a GitHub repository, you can push your project directly:</p>
+<ul>
+<li><p>​<strong>​Option 1:​</strong>​ Use the ​<strong>​“Push”​</strong>​ button in the top-right corner of RStudio.</p></li>
+<li><p>​<strong>​Option 2:​</strong>​ Run in the terminal:</p>
+<pre><code>git push origin main</code></pre></li>
+</ul></li>
+</ul>
+<p>​<strong>​Step 5: Set Up GitHub Pages​</strong>​</p>
+<ul>
+<li><p>After pushing, go to your GitHub repository:</p>
+<ul>
+<li>​<strong>​Settings​</strong>​ → ​<strong>​Pages​</strong>​ → Select the branch (e.g., <code>main</code> or <code>gh-pages</code>) and save.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="报错总结" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> 报错总结</h1>
 <ol type="1">
 <li>交叉引用没有对应的时候(在reference)里面对应就会报错,不能render book</li>
 <li>连接不了github的token的原因是校园网,任何DNS的问题很可能就是校园网的问题.</li>
 </ol>
+</section>
+<section id="prompts" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Prompts :</h1>
+<p>Research writing: Please refine the translation of [text] from Chinese to English, ensuring that it is precise, scholarly, and aligns with the professional standards of psychology, psychiatry, or public health. The translation should remain faithful to the original meaning, avoiding unnecessary condensation, and the language should be fluent, stylistically appropriate, and meet the high standards of academic writing. Pay special attention to consistency in terminology, and, when necessary, consider the cultural context to ensure the translation is suitable for the target academic audience. 】</p>
 
 
 </section>
